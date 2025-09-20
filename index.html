@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบลงทะเบียนเรียนล่วงหน้า</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>ระบบลงทะเบียนเรียนล่วงหน้า</h1>
+            <p>สำหรับนักเรียน ม.ปลาย ที่ต้องการเรียนวิชาระดับปี 1</p>
+        </div>
+
+        <!-- Authentication Section -->
+        <div id="auth-section" class="auth-section">
+            <h2>เข้าสู่ระบบ</h2>
+            <div class="form-group">
+                <label for="login-id">รหัสนักเรียน/แอดมิน:</label>
+                <input type="text" id="login-id" placeholder="กรอกรหัส 8 หลัก หรือ 'admin'">
+            </div>
+            <div class="form-group">
+                <label for="login-password">รหัสผ่าน:</label>
+                <input type="password" id="login-password" placeholder="กรอกรหัสผ่าน">
+            </div>
+            <button onclick="app.controller.login()">เข้าสู่ระบบ</button>
+            <div id="login-message"></div>
+        </div>
+
+        <!-- Main Content -->
+        <div id="main-content" class="main-content hidden">
+            <div id="user-info" class="user-info hidden"></div>
+            
+            <div class="nav-buttons">
+                <button id="btn-subjects" onclick="app.controller.showSubjectRegistration()">ลงทะเบียนเรียน</button>
+                <button id="btn-profile" onclick="app.controller.showStudentProfile()">ข้อมูลนักเรียน</button>
+                <button id="btn-admin" onclick="app.controller.showAdminPanel()" class="hidden">จัดการระบบ</button>
+                <button onclick="app.controller.logout()">ออกจากระบบ</button>
+            </div>
+
+            <div id="alert-container"></div>
+
+            <!-- Subject Registration View -->
+            <div id="subject-registration" class="view-content">
+                <h2>รายวิชาที่เปิดให้ลงทะเบียน</h2>
+                <div id="subjects-list"></div>
+            </div>
+
+            <!-- Subject Detail View -->
+            <div id="subject-detail" class="view-content hidden">
+                <h2>รายละเอียดวิชา</h2>
+                <div id="subject-detail-content"></div>
+            </div>
+
+            <!-- Student Profile View -->
+            <div id="student-profile" class="view-content hidden">
+                <h2>ข้อมูลนักเรียน</h2>
+                <div id="student-profile-content"></div>
+            </div>
+
+            <!-- Admin Panel View -->
+            <div id="admin-panel" class="view-content hidden">
+                <h2>จัดการระบบ</h2>
+                <div id="admin-content"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/models/StudentModel.js"></script>
+    <script src="js/models/SubjectModel.js"></script>
+    <script src="js/views/StudentView.js"></script>
+    <script src="js/controllers/RegistrationController.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
